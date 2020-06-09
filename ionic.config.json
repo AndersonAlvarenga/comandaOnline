@@ -1,0 +1,7 @@
+{
+  "name": "comandaOnline",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
