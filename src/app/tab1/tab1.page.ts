@@ -30,7 +30,7 @@ export class Tab1Page {
     private toastController: ToastController,
     private router: Router
   ) { }
-
+//teset
   async ngOnInit() {
     this.activeRoute.params.subscribe(dado => {
       this.aux = dado;
