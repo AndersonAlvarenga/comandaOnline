@@ -1,0 +1,50 @@
+<ion-header>
+</ion-header>
+<ion-content>
+  <ion-footer-bar>
+    <form padding #formpost="ngForm" class="card">
+      <ion-card class="formLogin">
+        <ion-item>
+          <ion-label position="stacked">Nome</ion-label>
+          <ion-label *ngIf="[verificadorNome]=='false'" position="stacked" style="color: red;">
+            CAMPO NOME DEVE SER PREENCHIDO
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.nome" type="text" name="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-label *ngIf="[verificadorEmail]=='false'" position="stacked" style="color: red;">
+            CAMPO EMAIL DEVE SER PREENCHIDO
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.email" type="text" name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-label *ngIf="[verificadorSenha]=='false'" position="stacked" style="color: red;">
+            CAMPO SENHA DEVE SER PREENCHIDO
+          </ion-label>
+          <ion-input [(ngModel)]="usuario.senha" type="password" name="password"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Confirme a Senha</ion-label>
+          <ion-label *ngIf="[verificadorRepSenha]=='false'" position="stacked" style="color: red;">
+            CAMPO CONFIRME SENHA DEVE SER PREENCHIDO
+          </ion-label>
+          <ion-input [(ngModel)]="testSenha.senha" type="password" name="password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="[verificadorSenhaCompativel]=='false'||[verificadorCaracter]=='false'">
+          <ion-label *ngIf="[verificadorSenhaCompativel]=='false'" position="stacked" style="color: red;">
+            AS SENHAS DEVEM SER IGUAIS
+          </ion-label>
+          <ion-label *ngIf="[verificadorCaracter]=='false'" position="stacked" style="color: red;">
+            AS SENHAS DEVEM TER NO MÍNIMO 6 CARACTERES
+          </ion-label>
+        </ion-item>
+
+        <ion-section class="button">
+          <ion-button color="danger" (click)="cadastrar()">Cadastrar</ion-button>
+        </ion-section>
+      </ion-card>
+    </form>
+  </ion-footer-bar>
+</ion-content>
