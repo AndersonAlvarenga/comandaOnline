@@ -71,8 +71,8 @@ export class CadastroPage implements OnInit {
         this.aux = this.usuario;
         this.aux.senha = null;
         this.user = this.aux;
-        this.user.id_mesa=null;
-        this.user.id_comanda=null;
+        this.user.id_mesa = null;
+        this.user.id_comanda = null;
         this.user.fire = resp;
         this.insertUser(this.user);
 
@@ -83,9 +83,10 @@ export class CadastroPage implements OnInit {
       }
     }
   }
-  insertUser(user) {
-    console.log(user)
-    this.userService.inserUser(this.user);
-    this.route.navigate(['tabs']);
+  async insertUser(user) {
+    let resp: any = await this.userService.inserUser(this.user);
+    this.usuario = resp;
+    console.log(this.usuario)
+    this.route.navigate(['tabs', { id: this.usuario.id }]);
   }
 }

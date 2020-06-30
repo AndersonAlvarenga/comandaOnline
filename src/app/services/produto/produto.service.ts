@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Comanda } from 'src/app/interfaces/comanda';
 
 @Injectable({
   providedIn: 'root'

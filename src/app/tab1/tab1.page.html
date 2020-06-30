@@ -1,4 +1,7 @@
-<ion-content>
+<div *ngIf="progress==true">
+    <ion-progress-bar type="indeterminate" ></ion-progress-bar>
+  </div>
+<ion-content *ngIf="progress!=true">
     <ion-header [translucent]="true">
         <ion-toolbar>
             <ion-title>
@@ -40,8 +43,8 @@
     </div>
    
 </ion-content>
-<ion-fab vertical="bottom" horizontal="end">
-    <ion-fab-button (click)="fazerPedido()">
+<ion-fab vertical="top" horizontal="end">
+    <ion-fab-button (click)="adicionarItem()">
         <ion-icon name="add"></ion-icon>
     </ion-fab-button>
 </ion-fab>

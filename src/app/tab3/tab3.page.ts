@@ -27,6 +27,7 @@ export class Tab3Page {
   ) { }
 
   async ngOnInit() {
+    
     this.activeRouter.params.subscribe(dado => {
       this.aux = dado;
       this.auxId = this.aux;
@@ -35,12 +36,16 @@ export class Tab3Page {
         this.id = this.aux
       }
     })
+  }
+  ionViewWillEnter(){
     this.carregarUser(this.id);
-
+    this.progress=true;
+    console.log("1")
+    console.log(this.progress)
     setInterval(() => {
       this.eliminarProgress();
     }, 3000);
-  }
+  } 
   eliminarProgress() {
     this.progress = false;
   }

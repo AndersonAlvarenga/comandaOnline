@@ -1,9 +1,59 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tab4</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-header>
 
+    <ion-row style="font-size: 12px;">
+      <ion-col size=3>
+        <img _ngcontent-ekl-c61="" class="logo"
+          src="https://i.pinimg.com/236x/66/f9/70/66f970bda935c2a7ee8d87234c40bbd7--cool-restaurant-restaurant-logos.jpg">
+      </ion-col>
+      <ion-col size=1></ion-col>
+      <ion-col size=6>
+        <ion-row>
+          Mesa: {{mesa.nome}}
+        </ion-row>
+        <ion-row>
+          Garcon: {{garcon.nome}}
+        </ion-row>
+        <ion-row>
+          Cliente: {{usuario.nome}}
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        {{comanda.status}}
+      </ion-col>
+    </ion-row>
+  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size=5>
+        PRODUTO
+      </ion-col>
+      <ion-col size=3>
+        QUANTIDADE
+      </ion-col>
+      <ion-col size=2>
+        VALOR UNIDADE
+      </ion-col>
+      <ion-col size=2>
+        TOTAL
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let produto of comanda.lista_produto">
+      <ion-col size=6>
+        {{produto.nome_produto}}
+      </ion-col>
+      <ion-col size=2>
+        {{produto.quantidade}}
+      </ion-col>
+      <ion-col size=2>
+        {{produto.preco}}
+      </ion-col>
+      <ion-col size=2>
+        {{produto.valor_total}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="text-align: right; padding: 10%;">Total:{{comanda.valor_comanda}}</div>
+
+  <ion-button *ngIf="comanda.status=='ABERTA'"expand="block" style="position: absolute; bottom: 0%; width: 100%;" (click)="fecharConta()">Fechar Conta</ion-button>
 </ion-content>

@@ -10,7 +10,10 @@ export class GarconService {
     private http: HttpClient
   ) { }
 
-  async getGarcon(){
+  async getGarcon() {
     return await this.http.get(this.link).toPromise();
+  }
+  async getGarconById(id) {
+    return await this.http.get(this.link + "/" + id).toPromise();
   }
 }

@@ -25,9 +25,9 @@ export class TabsPage {
       if (Object.keys(dado).length >= 1 && this.auxId.id!="") {
         this.aux = dado;
         this.id = this.aux
-        this.router.navigate(['tabs', { id: this.id.id },'tab2', { id: this.id.id }])
+        this.router.navigate(['tabs', { id: this.id.id },'tab1', { id: this.id.id }])
       }else{
-        this.router.navigate(['home'])
+        this.router.navigate([''])
       } 
     })
   }

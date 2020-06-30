@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PedidoService {
-  link = "http://192.168.0.105/pedido"
+  link = "http://192.168.0.105:8081/pedido"
   constructor(
     private http: HttpClient
   ) { }

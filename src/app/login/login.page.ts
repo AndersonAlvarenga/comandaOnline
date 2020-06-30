@@ -15,6 +15,7 @@ export class LoginPage implements OnInit {
   usuario: Usuario = {} as Usuario;
   user: Usuario;
   erroLogin = true;
+  alterar = true;
   constructor(
     private fireBase: AngularFireAuth,
     private route: Router,
@@ -27,8 +28,6 @@ export class LoginPage implements OnInit {
     let resp = await this.fireBase.signInWithEmailAndPassword(this.usuario.nome, this.usuario.senha).
       then((resp) => this.carregarUser(resp))
       .catch((error) => this.erroLogin = error)
-    console.log("arrumar um jeito de validar se o campo esta preenchido")
-
   }
   cadastrar() {
     this.route.navigate(['cadastro']);
@@ -37,6 +36,8 @@ export class LoginPage implements OnInit {
     this.user = this.usuario;
     this.user.fire = fire;
     let userId = await this.userService.getUserByEmail(this.user.nome);
+    this.alterar = false;
+    
     this.route.navigate(['tabs', { id: userId }]);
   }
 }

@@ -1,35 +1,71 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Mesas
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<div *ngIf="progress==true">
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+</div>
+<ion-content *ngIf="progress!=true">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Mesas
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="row" style="vertical-align: top;">
-    <ion-row style="text-align: center;">
-      <ion-card class="col-md-4" *ngFor="let mesa of listaMesa" style="width: 45%;margin:auto;position: relative;">
-        <ion-card-title style="font-size: 15px;">
-          <p>{{mesa.nome}}
-          </p>
-        </ion-card-title>
-        <img src="{{imagem}}" style="width: 90%;">
-
-        <div *ngFor="let garcon of listaGarcon">
-          <ion-card-title *ngIf="garcon.id==mesa.id_garcon">
-            <div>Garçon</div>
-            <div>
-              <img src="{{garcon.imagem}}" style="width: 30%; padding: 10px;">
-              <a style="font-size: 10px;">{{garcon.nome}}</a>
-            </div>
+  <ion-content [fullscreen]="true" *ngIf="usuario.id_mesa==null" style="padding: 10%;border: solid black;">
+    <div class="row" style="vertical-align: top; padding-bottom: 10%;">
+      <ion-row style="text-align: center;padding-bottom: 10px;">
+        <ion-card class="col-md-4" *ngFor="let mesa of listaMesa" style="width: 45%;margin:auto;">
+          <ion-card-title style="font-size: 15px;">
+            <p>{{mesa.nome}}
+            </p>
           </ion-card-title>
-        </div>
-        <ion-card-title>{{mesa.status}}</ion-card-title>
-        <div *ngIf="mesa.status!='OCUPADA'">
-          <ion-button color="primary" (click)="reservarMesa(mesa.id)">Reserva Mesa</ion-button>
-        </div>
-      </ion-card>
-    </ion-row>
-  </div>
+          <img src="{{imagem}}" style="width: 90%;">
+
+          <div *ngFor="let garcon of listaGarcon">
+            <ion-card-title *ngIf="garcon.id==mesa.id_garcon">
+              <div>Garçon</div>
+              <div>
+                <img src="{{garcon.imagem}}" style="width: 30%; padding: 10px;">
+                <a style="font-size: 10px;">{{garcon.nome}}</a>
+              </div>
+            </ion-card-title>
+          </div>
+          <ion-card-title>{{mesa.status}}</ion-card-title>
+          <div *ngIf="mesa.status!='OCUPADA'">
+            <ion-button color="primary" (click)="reservarMesa(mesa.id)">Reserva Mesa</ion-button>
+          </div>
+        </ion-card>
+      </ion-row>
+    </div>
+  </ion-content>
+  <ion-content *ngIf="usuario.id_mesa!=null">
+    <div class="row" style="vertical-align: top;">
+      <ion-row style="text-align: center;">
+        <ion-card class="col-md-4" style="width: 80%;margin:auto;">
+          <ion-card-title style="font-size: 15px;">
+            <p>Mesa: {{mesa.nome}}
+            </p>
+          </ion-card-title>
+          <img src="{{imagem}}" style="width: 90%;">
+
+          <div>
+            <ion-row>
+              <ion-col>
+                <img src="{{garcon.imagem}}" style="width: 50%; padding: 10px;">
+              </ion-col>
+              <ion-col style="font-size: 20px; top: 10%;position: relative; padding-top: 10%;">
+                {{garcon.nome}}
+              </ion-col>
+            </ion-row>
+          </div>
+
+
+          <ion-card-title>SUA MESA</ion-card-title>
+          <div>
+            <ion-button color="primary" (click)="alterarMesa()">Alterar Mesa</ion-button>
+          </div>
+        </ion-card>
+      </ion-row>
+    </div>
+  </ion-content>
 </ion-content>
+<ion-bar style="height: 5%;"></ion-bar>
