@@ -38,6 +38,7 @@ export class Tab3Page {
     })
   }
   ionViewWillEnter(){
+    
     this.carregarUser(this.id);
     this.progress=true;
     console.log("1")

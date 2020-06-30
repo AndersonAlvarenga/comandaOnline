@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
   user: Usuario;
   erroLogin = true;
   alterar = true;
+  bemVindo = true;
   constructor(
     private fireBase: AngularFireAuth,
     private route: Router,
@@ -23,6 +24,12 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    setTimeout(()=>{
+      this.alterarPagina();
+    },5000)
+  }
+  alterarPagina(){
+    this.bemVindo=false;
   }
   async login() {
     let resp = await this.fireBase.signInWithEmailAndPassword(this.usuario.nome, this.usuario.senha).
@@ -37,7 +44,7 @@ export class LoginPage implements OnInit {
     this.user.fire = fire;
     let userId = await this.userService.getUserByEmail(this.user.nome);
     this.alterar = false;
-    
+
     this.route.navigate(['tabs', { id: userId }]);
   }
 }

@@ -1,6 +1,17 @@
-<ion-header>
-</ion-header>
-<ion-content>
+<ion-content *ngIf="bemVindo==true" style="text-align: center;">
+  
+    <ion-card-title style="padding-top: 10%;font-size: 35px;  width: 80%;margin: auto;">
+      <p>Bem vindo</p>
+      <p>ao</p>
+      <p>Comanda Online</p>
+    </ion-card-title>
+    <ion-card-subtitle style="font-size: 30px;  width: 80%; margin: auto;">
+      <p>Seus pedidos na palma da mão!</p>
+    </ion-card-subtitle>
+  
+  
+</ion-content>
+<ion-content *ngIf="bemVindo==false">
   <ion-footer-bar>
     <form padding #formpost="ngForm" class="card">
       <ion-card class="formLogin">

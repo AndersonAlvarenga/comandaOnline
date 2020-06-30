@@ -34,7 +34,7 @@ export class Tab4Page implements OnInit {
     private garconService: GarconService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.activeRouter.params.subscribe(dado => {
       console.log(dado)
       this.aux = dado;
@@ -45,8 +45,18 @@ export class Tab4Page implements OnInit {
         console.log(this.id)
       }
     })
+    let aux: any;
+    aux = await this.userService.getUserByID(this.id.id);
+    this.usuario = aux;
+    aux = await this.comandaService.getById(this.usuario.id_comanda);
+    this.comanda = aux;
+    aux = await this.mesaService.getMesaById(this.comanda.id_mesa);
+    this.mesa = aux;
+    aux = await this.garconService.getGarconById(this.comanda.id_garcon);
+    this.garcon = aux;
   }
   async ionViewWillEnter() {
+    console.log("ion")
     let aux: any;
     aux = await this.userService.getUserByID(this.id.id);
     this.usuario = aux;
